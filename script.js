@@ -114,6 +114,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   function closeModal() {
     if (ctaModal) {
+      ctaModal.classList.remove('open');
       ctaModal.style.display = 'none';
       document.body.style.overflow = '';
     }
@@ -121,7 +122,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
   if (ctaButton && ctaModal) {
     ctaButton.addEventListener('click', function() {
-      ctaModal.style.display = 'flex';
+      ctaModal.style.display = 'block';
+      // allow layout flush before adding class for transition
+      requestAnimationFrame(() => ctaModal.classList.add('open'));
       document.body.style.overflow = 'hidden';
       const firstInput = document.getElementById('cta-name');
       if (firstInput) firstInput.focus();
