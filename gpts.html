@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' https:; connect-src 'self'">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <title>SereneAI GPTs</title>
+    <meta name="description" content="Free GPT tools from SereneAI" />
+    <link rel="alternate" href="https://sereneai.co.uk/gpts.html" hreflang="en-GB">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Open+Sans:wght@400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+    <header role="banner">
+        <div class="logo">SereneAI&nbsp;LTD</div>
+        <input type="checkbox" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <label for="nav-toggle" class="nav-label"><span></span></label>
+        <nav aria-label="Main navigation">
+            <a href="index.html" aria-label="Home">Home</a>
+            <a href="gpts.html" aria-label="SereneAI GPTs">GPTs</a>
+            <a href="products.html" aria-label="Products page">Products</a>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <section class="hero">
+            <h1>Free GPTs from SereneAI</h1>
+            <p>Helpful tools designed to support your productivity, automation, and creative workflows.</p>
+        </section>
+
+        <section class="hero gpt-hero">
+            <h2>WebContainer – Your UK-Based Browser Coding Tool</h2>
+            <a href="https://chatgpt.com/g/g-686c3b90f5dc8191a0a4ddf68a13acf7-webcontainer-your-uk-based-browser-coding-tool"
+               class="primary-cta" target="_blank" rel="noopener noreferrer"
+               aria-label="Launch WebContainer GPT in ChatGPT">
+                Launch GPT
+            </a>
+        </section>
+
+        <section class="hero gpt-hero">
+            <h2>UK Co-Creator for Better AI Outputs</h2>
+            <a href="https://chatgpt.com/g/g-6869aadbec48191812a111533a36363-promptpilot-uk-co-creator-for-better-ai-outputs"
+               class="primary-cta" target="_blank" rel="noopener noreferrer"
+               aria-label="Launch UK Co-Creator GPT in ChatGPT">
+                Launch GPT
+            </a>
+        </section>
+    </main>
+
+    <footer role="contentinfo">
+        <p>&copy; <span id="current-year">2024</span> SereneAI LTD. All rights reserved. <a href="privacy.html">Privacy Policy</a></p>
+    </footer>
+
+    <div id="cookie-banner">
+        <p>
+            This website uses cookies to enhance your experience. By continuing to browse, you consent to our use of cookies as described in our <a href="privacy.html" style="color:#1D8A73; text-decoration:underline;">Privacy Policy</a>.
+        </p>
+        <button id="accept-cookies">Accept</button>
+        <button id="reject-cookies">Reject</button>
+    </div>
+
+    <button id="cta-button" class="cta-button">Get Started</button>
+    <div id="cta-modal" class="cta-modal" role="dialog" aria-modal="true" aria-labelledby="cta-heading">
+        <div class="modal-content">
+            <button id="cta-close" aria-label="Close modal">&times;</button>
+            <h2 id="cta-heading">Let’s talk – share your details and we’ll be in touch</h2>
+            <form id="cta-form" name="contact" method="POST" data-netlify="true">
+                <input type="hidden" name="form-name" value="contact">
+                <label for="cta-name">Name</label>
+                <input id="cta-name" name="name" type="text" required>
+                <label for="cta-email">Email</label>
+                <input id="cta-email" name="email" type="email" required>
+                <label for="cta-company">Company</label>
+                <input id="cta-company" name="company" type="text">
+                <label for="cta-size">Company Size</label>
+                <select id="cta-size" name="company_size">
+                    <option value="<10">&lt;10</option>
+                    <option value="10-25">10-25</option>
+                    <option value="25-100">25-100</option>
+                    <option value="100+">100+</option>
+                </select>
+                <label for="cta-website">Link to Website</label>
+                <input id="cta-website" name="website" type="url">
+                <label for="cta-problem">What problem are you trying to solve?</label>
+                <textarea id="cta-problem" name="problem" rows="3"></textarea>
+                <label for="cta-success">What does Success look like?</label>
+                <textarea id="cta-success" name="success" rows="3"></textarea>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+    <script src="script.js" defer></script>
+
+</body>
+</html>

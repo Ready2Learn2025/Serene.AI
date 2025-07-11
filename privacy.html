@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' https:; connect-src 'self'">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <title>Privacy Policy - SereneAI LTD</title>
+    <link rel="alternate" href="https://sereneai.co.uk/privacy.html" hreflang="en-GB">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body{font-family: 'Segoe UI', 'Arial', 'Liberation Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; background:#F6F9F9;color:#0B2342;margin:0;line-height:1.7;}
+    </style>
+</head>
+<body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+    <main id="main-content">
+        <section class="hero">
+            <h1>Privacy Policy</h1>
+            <p>This privacy policy explains how SereneAI LTD ("we", "us") collects and uses your personal data in accordance with the UK General Data Protection Regulation (UK GDPR).</p>
+            <h2>Data Controller</h2>
+            <p>SereneAI LTD is the data controller. You can reach us at <a href="mailto:info@sereneai.co.uk">info@sereneai.co.uk</a>.</p>
+
+            <h2>Information We Collect</h2>
+            <p>When you submit a form we collect your name, email and any other details you choose to provide.</p>
+
+            <h2>How We Use Your Data</h2>
+            <p>Your details are used only to respond to your enquiry or provide the services you request.</p>
+
+            <h2>Legal Basis</h2>
+            <p>We process your data with your consent or where it is in our legitimate interest to respond to business enquiries.</p>
+
+            <h2>Retention</h2>
+            <p>Contact form submissions are kept for up to 12&nbsp;months and then securely deleted unless we have an ongoing relationship.</p>
+
+            <h2>Processors</h2>
+            <p>Our site is hosted by Netlify and form submissions are processed by them. <strong>We do not load any fonts from Google Fonts or other third-party font providers. All fonts are loaded locally from your device for privacy.</strong></p>
+
+            <h2>Your Rights</h2>
+            <p>You may request access to, correction or deletion of your data at any time by emailing us.</p>
+
+            <h2>Cookies</h2>
+            <p>We use a single consent cookie (<code>uk_gdpr_consent</code>) to remember whether you accepted or rejected cookies. You can withdraw consent by clearing your cookies.</p>
+        </section>
+    </main>
+
+    <button id="cta-button" class="cta-button">Get Started</button>
+    <div id="cta-modal" class="cta-modal" role="dialog" aria-modal="true" aria-labelledby="cta-heading">
+        <div class="modal-content">
+            <button id="cta-close" aria-label="Close modal">&times;</button>
+            <h2 id="cta-heading">Let’s talk – share your details and we’ll be in touch</h2>
+            <form id="cta-form" name="contact" method="POST" data-netlify="true">
+                <input type="hidden" name="form-name" value="contact">
+                <label for="cta-name">Name</label>
+                <input id="cta-name" name="name" type="text" required>
+                <label for="cta-email">Email</label>
+                <input id="cta-email" name="email" type="email" required>
+                <label for="cta-company">Company</label>
+                <input id="cta-company" name="company" type="text">
+                <label for="cta-size">Company Size</label>
+                <select id="cta-size" name="company_size">
+                    <option value="<10">&lt;10</option>
+                    <option value="10-25">10-25</option>
+                    <option value="25-100">25-100</option>
+                    <option value="100+">100+</option>
+                </select>
+                <label for="cta-website">Link to Website</label>
+                <input id="cta-website" name="website" type="url">
+                <label for="cta-problem">What problem are you trying to solve?</label>
+                <textarea id="cta-problem" name="problem" rows="3"></textarea>
+                <label for="cta-success">What does Success look like?</label>
+                <textarea id="cta-success" name="success" rows="3"></textarea>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+    <script src="script.js" defer></script>
+</body>
+</html>
