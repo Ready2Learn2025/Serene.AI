@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' https:; connect-src 'self'">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.tailwindcss.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' https:; connect-src 'self'">
     <meta name="referrer" content="strict-origin-when-cross-origin">
 
     <title>SereneAI LTD — Clarity in an Automated World</title>
@@ -36,6 +36,7 @@
 
     <!-- Removed Google Fonts for privacy. Using system fonts below. -->
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body class="home">
@@ -151,7 +152,7 @@
         <div class="modal-content">
             <button id="cta-close" aria-label="Close modal">&times;</button>
             <h2 id="cta-heading">Let’s talk – share your details and we’ll be in touch</h2>
-            <form id="cta-form" name="contact" method="POST" data-netlify="true">
+            <form id="cta-form" name="contact" method="POST" data-netlify="true" class="hidden">
                 <input type="hidden" name="form-name" value="contact">
                 <label for="cta-name">Name</label>
                 <input id="cta-name" name="name" type="text" required>
@@ -175,6 +176,17 @@
                 <button type="submit">Submit</button>
             </form>
         </div>
+    </div>
+    <div id="chatbot" class="hidden fixed bottom-4 right-4 w-96 max-w-full bg-white border rounded-lg shadow-lg flex flex-col z-50">
+        <div class="flex justify-between items-center p-2 border-b">
+            <h2 class="font-semibold">Let’s talk</h2>
+            <button id="chatbot-close" aria-label="Close">&times;</button>
+        </div>
+        <div id="chatbot-messages" class="flex-1 p-4 overflow-y-auto space-y-4 text-sm"></div>
+        <form id="chatbot-form" class="p-2 border-t flex">
+            <input id="chatbot-input" type="text" class="flex-1 border rounded px-2 py-1" placeholder="Type your answer..." autocomplete="off" />
+            <button type="submit" class="ml-2 bg-teal-600 text-white px-3 py-1 rounded">Send</button>
+        </form>
     </div>
     <script src="script.js" defer></script>
 </body>

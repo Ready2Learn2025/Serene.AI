@@ -66,6 +66,11 @@ document.addEventListener('DOMContentLoaded', function() {
   const ctaModal = document.getElementById('cta-modal');
   const ctaClose = document.getElementById('cta-close');
   const ctaForm = document.getElementById('cta-form');
+  const chatbot = document.getElementById('chatbot');
+  const chatbotMessages = document.getElementById('chatbot-messages');
+  const chatbotForm = document.getElementById('chatbot-form');
+  const chatbotInput = document.getElementById('chatbot-input');
+  const chatbotClose = document.getElementById('chatbot-close');
 
   // ----- Logo Intro Animation -----
   const body = document.body;
@@ -112,67 +117,80 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  function closeModal() {
-    if (ctaModal) {
-      ctaModal.style.display = 'none';
+  function closeChat() {
+    if (chatbot) {
+      chatbot.classList.add('hidden');
       document.body.style.overflow = '';
     }
   }
 
-  if (ctaButton && ctaModal) {
+  function addMessage(text, sender) {
+    const msg = document.createElement('div');
+    msg.className = sender === 'bot' ? 'text-left' : 'text-right';
+    msg.innerHTML = `<span class="inline-block px-3 py-2 rounded-lg ${sender === 'bot' ? 'bg-gray-100' : 'bg-teal-600 text-white'}">${text}</span>`;
+    chatbotMessages.appendChild(msg);
+    chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+  }
+
+  const questions = [
+    { name: 'name', text: 'What is your name?' },
+    { name: 'email', text: 'What is your email?' },
+    { name: 'company', text: 'Company name?' },
+    { name: 'company_size', text: 'Company size?' },
+    { name: 'website', text: 'Link to your website?' },
+    { name: 'problem', text: 'What problem are you trying to solve?' },
+    { name: 'success', text: 'What does success look like?' }
+  ];
+
+  let qIndex = 0;
+
+  function askQuestion() {
+    if (qIndex < questions.length) {
+      const q = questions[qIndex];
+      const typing = document.createElement('div');
+      typing.className = 'text-left text-gray-400 italic';
+      typing.textContent = '...';
+      chatbotMessages.appendChild(typing);
+      chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+      setTimeout(() => {
+        typing.remove();
+        addMessage(q.text, 'bot');
+      }, 400);
+    } else {
+      addMessage('Thanks! We\'ll be in touch soon.', 'bot');
+      if (ctaForm) {
+        ctaForm.submit();
+      }
+    }
+  }
+
+  if (chatbotForm) {
+    chatbotForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const val = chatbotInput.value.trim();
+      if (!val) return;
+      addMessage(val, 'user');
+      const q = questions[qIndex];
+      const field = ctaForm ? ctaForm.querySelector(`[name="${q.name}"]`) : null;
+      if (field) field.value = val;
+      chatbotInput.value = '';
+      qIndex++;
+      askQuestion();
+    });
+  }
+
+  if (ctaButton) {
     ctaButton.addEventListener('click', function() {
-      ctaModal.style.display = 'flex';
-      document.body.style.overflow = 'hidden';
-      const firstInput = document.getElementById('cta-name');
-      if (firstInput) firstInput.focus();
-    });
-
-    if (ctaClose) {
-      ctaClose.addEventListener('click', closeModal);
-    }
-
-    ctaModal.addEventListener('click', function(e) {
-      if (e.target === ctaModal) {
-        closeModal();
+      if (chatbot) {
+        chatbotMessages.innerHTML = '';
+        qIndex = 0;
+        chatbot.classList.remove('hidden');
+        askQuestion();
       }
     });
+  }
 
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') {
-        closeModal();
-      }
-    });
-
-    // Custom confirmation message for form submission
-    if (ctaForm) {
-      ctaForm.addEventListener('submit', function(e) {
-        // Prevent default Netlify redirect for in-modal confirmation
-        e.preventDefault();
-        // Hide the form
-        ctaForm.style.display = 'none';
-        // Show a confirmation message
-        const modalContent = ctaModal.querySelector('.modal-content');
-        let confirmMsg = document.createElement('div');
-        confirmMsg.className = 'cta-confirmation';
-        confirmMsg.innerHTML = `
-          <h2>Thank you!</h2>
-          <p>Your details have been received. We’ll be in touch soon.</p>
-          <button id="cta-confirm-close" class="cta-confirm-close">Close</button>
-        `;
-        modalContent.appendChild(confirmMsg);
-        // Focus the close button for accessibility
-        const closeBtn = document.getElementById('cta-confirm-close');
-        if (closeBtn) {
-          closeBtn.focus();
-          closeBtn.addEventListener('click', function() {
-            closeModal();
-            // Reset form and confirmation for next open
-            ctaForm.reset();
-            ctaForm.style.display = '';
-            confirmMsg.remove();
-          });
-        }
-      });
-    }
+  if (chatbotClose) {
+    chatbotClose.addEventListener('click', closeChat);
   }
 });
